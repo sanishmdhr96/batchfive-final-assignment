@@ -3,7 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Student CMS</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main">
+      <!-- 1. Form design -->
+      <form class="form">
+        <div class="form-group">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input name="name" type="text" id="name" placeholder="Enter name" />
+          </div>
+          <div class="form-row">
+            <label for="email_address">Email Address</label>
+            <input
+              name="email_address"
+              type="email"
+              id="email_address"
+              placeholder="Enter email address"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-row">
+            <label for="phone_number">Phone number</label>
+            <input
+              name="phone_number"
+              type="number"
+              id="phone_number"
+              placeholder="Enter phone number"
+            />
+          </div>
+          <div class="form-row">
+            <label for="address">Address</label>
+            <input
+              name="address"
+              type="text"
+              id="address"
+              placeholder="Enter address"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <label for="father_name">Father Name</label>
+            <input
+              name="father_name"
+              type="text"
+              id="father_name"
+              placeholder="Enter Father name"
+            />
+          </div>
+          <div class="form-row">
+            <label for="mother_name">Mother Name</label>
+            <input
+              name="mother_name"
+              type="text"
+              id="mother_name"
+              placeholder="Enter mother name"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <label for="age">Age</label>
+            <input name="age" type="number" id="age" placeholder="Enter Age" />
+          </div>
+          <div class="form-row">
+            <label for="guardian_number">Guardian number</label>
+            <input
+              name="guardian_number"
+              type="guardian_number"
+              id="guardian_number"
+              placeholder="Enter Guardian Number"
+            />
+          </div>
+        </div>
+        <div class="form-group action-container">
+          <div class="form-row">
+            <button id="form-submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="./index.js"></script>
+    <!-- 2. Local storage -> students details save -->
+  </body>
 </html>

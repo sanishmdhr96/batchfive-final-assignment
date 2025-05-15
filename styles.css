@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+  border: 1px solid #ebebeb;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.form .form-group {
+  display: flex;
+  gap: 8px;
+}
+
+.form .form-row {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 4px;
+}
+
+.form .form-row > label {
+  color: black;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+input {
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 4px;
+  height: 30px;
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  font-size: 11px;
+  color: rgb(204, 204, 204);
+}
+
+button {
+  width: 100px;
+  background-color: rgb(209, 135, 135);
+  border: 0;
+  height: 30px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(218, 123, 123);
+}
+
+.form-group.action-container {
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.form-group.action-container > .form-row {
+  align-items: center;
+}
