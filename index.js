@@ -1,18 +1,14 @@
 import { TABLE_NAME } from "./constants.js";
+import { getStudentDataByID, postStudentData } from "./models/students.js";
 import { getDataFromDB, setDataToDB } from "./utils/storageUtil.js";
 
 const submitButton = document.getElementById("form-submit");
 submitButton.addEventListener("click", submitData);
 
-
-
 const fetchButton = document.getElementById("get-data");
 fetchButton.addEventListener("click", getData);
 
-
-
 function submitData(event) {
-    console.log("event", event)
     event.preventDefault();
 
     // get dom element
@@ -22,7 +18,7 @@ function submitData(event) {
     const emailField = document.getElementById("email_address");
     const emailValue = emailField.value;
 
-    const result = setDataToDB(TABLE_NAME.STUDENTS, {
+    const result = postStudentData({
         name: nameValue,
         email_address: emailValue,
     });
@@ -37,7 +33,5 @@ function submitData(event) {
 
 
 function getData() {
-    const result = getDataFromDB(TABLE_NAME.STUDENTS, 229)
-
-    console.log(result)
+    const result = getStudentDataByID(20)
 }

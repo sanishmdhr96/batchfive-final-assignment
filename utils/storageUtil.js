@@ -1,9 +1,7 @@
 import { MESSAGES } from "../constants.js";
 
-function generateRandomId8Bit() {
-    return Math.floor(Math.random() * 256);
-}
-function generateResponse(message, status, data = []) {
+
+export function generateResponse(message, status, data = []) {
     return {
         message: message,
         payload: {
@@ -15,61 +13,41 @@ function generateResponse(message, status, data = []) {
 
 function setDataToDB(tableName, data) {
     // data check
-    if (data) {
-        // generate id for student data
-        const studentId = generateRandomId8Bit()
+    if (data)
+    // convert data to json string
+    {
+        const convertedData = JSON.stringify([data])
 
-        // add id to the data object
-        const formatedData = Object.assign(data, {
-            id: studentId
-        })
+        try {
+            localStorage.setItem(tableName, convertedData)
 
-        // convert data to json string
-        const convertedData = JSON.stringify([formatedData])
+            // return response
+            return generateResponse(MESSAGES.success, 201, data
+            )
+        } catch (e) {
+            return generateResponse(MESSAGES.INVALID, 400)
+        }
 
-        // save to local storage
-        localStorage.setItem(tableName, convertedData)
-
-        // return response
-        return generateResponse(MESSAGES.student.SAVED, 201, {
-            id: formatedData?.id
-        })
     }
-
 
     return generateResponse(MESSAGES.INVALID, 400)
 
 }
 
 
-function getDataFromDB(tablename, studentId) {
+function getDataFromDB(tablename) {
     // data check
-    if (studentId) {
+    if (tablename) {
 
-        const allStudents = localStorage.getItem(tablename)
+        const data = localStorage.getItem(tablename)
 
-        if (allStudents) {
-            const convertedData = JSON.parse(allStudents)
+        const result = JSON.parse(data)
 
-            const studentData = convertedData?.find(st => st.id === studentId)
-
-            if (studentData?.id) {
-                return {
-                    payload: {
-                        data: studentData
-                    },
-                    status: 200
-                }
-            }
-
-
-            return generateResponse(MESSAGES.student.NOT_FOUND, 400)
-        }
-
-        return generateResponse(MESSAGES.student.NOT_FOUND, 400)
+        return generateResponse(MESSAGES.success, 200, result
+        )
     }
 
-    return generateResponse(MESSAGES.INVALID, 400)
+    return generateResponse(MESSAGES.NOT_FOUND, 400)
 }
 
 export { setDataToDB, getDataFromDB } 
