@@ -16,17 +16,45 @@ export function postStudentData(data) {
         const studentId = generateRandomId8Bit();
 
         // add id to the data object
-        const formatedData = Object.assign(data, {
+        const newStudent = Object.assign(data, {
             id: studentId,
         });
 
-        const result = setDataToDB(table_name, formatedData);
+        // get all students list
 
-        if (result?.status === 201) {
-            return generateResponse(MESSAGES.student.SAVED, result?.status, {
-                id: result?.payload?.data?.id || null,
-            });
+        const { payload: allstudents } = getDataFromDB(table_name)
+        allstudents
+
+
+        const isEmailUnique = !allstudents?.data?.find(student => student?.email_address === newStudent.email_address)
+
+        console.log('isEmailUnique', isEmailUnique)
+
+        let result;
+        if (allstudents?.data?.length > 0) {
+            if (isEmailUnique) {
+                const newStudentsArray = [...allstudents?.data, newStudent]
+                result = setDataToDB(table_name, newStudentsArray);
+
+                if (result?.status === 201) {
+                    return generateResponse(MESSAGES.student.SAVED, result?.status, {
+                        id: result?.payload?.data?.id || null,
+                    });
+                }
+            }
+            return generateResponse(MESSAGES.student.ALREADY_EXISTS, 400);
+        } else {
+            result = setDataToDB(table_name, [newStudent]);
+
+            if (result?.status === 201) {
+                return generateResponse(MESSAGES.student.SAVED, result?.status, {
+                    id: result?.payload?.data?.id || null,
+                });
+            }
         }
+
+
+
     }
 
     return generateResponse(MESSAGES.INVALID, 400);

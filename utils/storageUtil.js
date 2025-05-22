@@ -16,7 +16,7 @@ function setDataToDB(tableName, data) {
     if (data)
     // convert data to json string
     {
-        const convertedData = JSON.stringify([data])
+        const convertedData = JSON.stringify(data)
 
         try {
             localStorage.setItem(tableName, convertedData)
@@ -47,7 +47,7 @@ function getDataFromDB(tablename) {
         )
     }
 
-    return generateResponse(MESSAGES.NOT_FOUND, 400)
+    return generateResponse(MESSAGES.NOT_FOUND, 400, [])
 }
 
 export { setDataToDB, getDataFromDB } 
