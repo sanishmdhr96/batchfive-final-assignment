@@ -28,8 +28,6 @@ export function postStudentData(data) {
 
         const isEmailUnique = !allstudents?.data?.find(student => student?.email_address === newStudent.email_address)
 
-        console.log('isEmailUnique', isEmailUnique)
-
         let result;
         if (allstudents?.data?.length > 0) {
             if (isEmailUnique) {

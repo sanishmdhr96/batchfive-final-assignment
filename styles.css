@@ -80,3 +80,8 @@ button:hover {
 .form-group.action-container > .form-row {
   align-items: center;
 }
+
+.error-message {
+  font-size: 11px;
+  color: red;
+}
