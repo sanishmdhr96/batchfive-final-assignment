@@ -78,3 +78,13 @@ export function getStudentDataByID(studentId) {
 
     return generateResponse(MESSAGES.INVALID, 400);
 }
+
+export function getAllStudents() {
+    const result = getDataFromDB(table_name);
+
+    if (result?.status === 200 && result?.payload?.data.length > 0) {
+        return generateResponse(MESSAGES.student.FOUND, 200, result?.payload?.data);
+    }
+
+    return generateResponse(MESSAGES.student.NOT_FOUND, 400);
+}

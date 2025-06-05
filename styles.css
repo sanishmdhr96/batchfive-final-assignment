@@ -9,6 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .form {
@@ -16,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: auto;
+  margin: 20px auto 20px auto;
   border: 1px solid #ebebeb;
   padding: 24px;
   border-radius: 8px;
@@ -84,4 +85,17 @@ button:hover {
 .error-message {
   font-size: 11px;
   color: red;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#subjects-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -15,7 +15,7 @@
   <body>
     <div class="main">
       <!-- 1. Form design -->
-      <form class="form">
+      <form class="form" id="student-form">
         <div class="form-group">
           <div class="form-row">
             <label for="name">Name</label>
@@ -93,15 +93,43 @@
               id="guardian_number"
               placeholder="Enter Guardian Number"
               required
+              onchange="tryFunc()"
             />
           </div>
         </div>
+
+        <div class="form-group" style="flex-direction: column">
+          <div class="form-row">
+            <label>Subjects</label>
+          </div>
+
+          <div id="subjects-form-group"></div>
+        </div>
+        <button type="button" id="add-subject">Add</button>
+
         <div class="form-group action-container">
           <div class="form-row">
             <button type="button" id="form-submit">Submit</button>
           </div>
         </div>
       </form>
+
+      <table id="student-list">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>Father Name</th>
+            <th>Mother Name</th>
+            <th>Guardian Number</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody id="student-list-body">
+          <!-- Student details will be populated here -->
+        </tbody>
+      </table>
     </div>
     <script type="module" src="./index.js"></script>
     <!-- 2. Local storage -> students details save -->
