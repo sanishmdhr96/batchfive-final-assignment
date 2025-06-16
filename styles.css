@@ -42,7 +42,8 @@ body {
   font-weight: 500;
 }
 
-input {
+input,
+select {
   border: 1px solid rgb(192, 192, 192);
   border-radius: 4px;
   height: 30px;
@@ -50,11 +51,13 @@ input {
   font-size: 12px;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: none;
 }
 
-input::placeholder {
+input::placeholder,
+select::placeholder {
   font-size: 11px;
   color: rgb(204, 204, 204);
 }
